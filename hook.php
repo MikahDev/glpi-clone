@@ -11,13 +11,13 @@ function plugin_cloneitems_install() {
     $migration = new Migration(100);
 
     //Create table only if it does not exists yet!
-    if (!TableExists('glpi_plugin_cloneitems_configs')) {
+    if (!TableExists('glpi_plugin_myexample_configs')) {
         //table creation query
-        $query = "CREATE TABLE `glpi_plugin_cloneitems_config` (
-                  `id` INT(11) NOT NULL autoincrement,
+        $query = "CREATE TABLE `glpi_plugin_cloneitems_configs` (
+                  `id` INT(11) NOT NULL AUTO_INCREMENT,
                   `name` VARCHAR(255) NOT NULL,
                   PRIMARY KEY  (`id`)
-               ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+               ) ENGINE=innodb  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
         $DB->queryOrDie($query, $DB->error());
     }
 
@@ -47,6 +47,22 @@ function plugin_cloneitems_install() {
  * @return boolean
  */
 function plugin_cloneitems_uninstall() {
-    //to some stuff, like removing tables, generated files, ...
+    global $DB;
+
+    $tables = [
+        'configs'
+    ];
+
+    foreach ($tables as $table) {
+        $tablename = 'glpi_plugin_cloneitems_' . $table;
+        //Create table only if it does not exists yet!
+        if (TableExists($tablename)) {
+            $DB->queryOrDie(
+                "DROP TABLE `$tablename`",
+                $DB->error()
+            );
+        }
+    }
+
     return true;
 }
