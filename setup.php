@@ -1,6 +1,6 @@
 <?php
 
-define('MYEXAMPLE_VERSION', '1.2.10');
+define('CLONEITEMS_VERSION', '0.0.1');
 
 /**
  * Init the hooks of the plugins - Needed
@@ -11,7 +11,7 @@ function plugin_init_myexample() {
     global $PLUGIN_HOOKS;
 
     //required!
-    $PLUGIN_HOOKS['csrf_compliant']['myexample'] = true;
+    $PLUGIN_HOOKS['csrf_compliant']['cloneitems'] = true;
 
     //some code here, like call to Plugin::registerClass(), populating PLUGIN_HOOKS, ...
 }
@@ -21,16 +21,16 @@ function plugin_init_myexample() {
  *
  * @return array
  */
-function plugin_version_myexample() {
+function plugin_version_cloneitems() {
     return [
-        'name'           => 'Plugin name that will be displayed',
-        'version'        => MYEXAMPLE_VERSION,
-        'author'         => 'John Doe and <a href="http://foobar.com">Foo Bar</a>',
+        'name'           => 'Clone Items',
+        'version'        => CLONEITEMS_VERSION,
+        'author'         => 'Michael Villeprat, <a href="https://www.mcv-fr.com">M.C.V</a>',
         'license'        => 'GLPv3',
-        'homepage'       => 'http://perdu.com',
+        'homepage'       => 'https://www.mcv-fr.com',
         'requirements'   => [
             'glpi'   => [
-                'min' => '9.1'
+                'min' => '9.3'
             ]
         ]
     ];
@@ -41,7 +41,7 @@ function plugin_version_myexample() {
  *
  * @return boolean
  */
-function plugin_myexample_check_prerequisites() {
+function plugin_cloneitems_check_prerequisites() {
     //do what the checks you want
     return true;
 }
@@ -54,7 +54,7 @@ function plugin_myexample_check_prerequisites() {
  *
  * @return boolean
  */
-function plugin_myexample_check_config($verbose = false) {
+function plugin_cloneitems_check_config($verbose = false) {
     if (true) { // Your configuration check
         return true;
     }
