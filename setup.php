@@ -7,13 +7,19 @@ define('CLONEITEMS_VERSION', '0.0.1');
  *
  * @return void
  */
-function plugin_init_myexample() {
+function plugin_init_cloneitems() {
+
     global $PLUGIN_HOOKS;
+
+    Plugin::registerClass('PluginCloneitemsClone');
 
     //required!
     $PLUGIN_HOOKS['csrf_compliant']['cloneitems'] = true;
 
     //some code here, like call to Plugin::registerClass(), populating PLUGIN_HOOKS, ...
+
+    $PLUGIN_HOOKS['use_massive_action']['cloneitems'] = 1;
+
 }
 
 /**

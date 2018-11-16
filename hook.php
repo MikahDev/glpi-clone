@@ -4,6 +4,9 @@
  *
  * @return boolean
  */
+
+//require_once "inc/clone.class.php";
+
 function plugin_cloneitems_install() {
     global $DB;
 
@@ -65,4 +68,16 @@ function plugin_cloneitems_uninstall() {
     }
 
     return true;
+}
+
+
+function plugin_cloneitems_MassiveActions($type) {
+    $actions = [];
+    switch ($type) {
+        case 'TicketTemplate' :
+            return ['PluginCloneitemsClone'.MassiveAction::CLASS_ACTION_SEPARATOR.'CloneTicketTemplate' =>
+                __("Duplicate Item", 'cloneitems')];
+
+    }
+    return $actions;
 }

@@ -1,5 +1,6 @@
 dist/
 vendor/
+tools/
 .gh_token
 *.min.*
 
