@@ -77,6 +77,9 @@ function plugin_cloneitems_MassiveActions($type) {
         case 'TicketTemplate' :
             return ['PluginCloneitemsClone'.MassiveAction::CLASS_ACTION_SEPARATOR.'CloneTicketTemplate' =>
                 __("Duplicate Item", 'cloneitems')];
+        case 'NetworkEquipment' :
+            return ['PluginCloneitemsClone'.MassiveAction::CLASS_ACTION_SEPARATOR.'CloneNetworkEquipment' =>
+                __("Duplicate Item", 'cloneitems')];
 
     }
     return $actions;
